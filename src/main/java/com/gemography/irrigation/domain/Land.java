@@ -34,15 +34,15 @@ public class Land {
     @Column(unique=true)
     private String code;
     
-    private Integer area;
+    private float area;
     
     private String landType;
     
     private String agricType;
      
-    private Date createOn;
+    private Date createdOn;
     private Date modifiedOn;
     
     @OneToMany(mappedBy="land")
-    private List<IotDevice> iotDevices;
+    private List<LandConfiguration> landConfigurations;
 }

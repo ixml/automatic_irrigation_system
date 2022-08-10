@@ -3,6 +3,8 @@ package com.gemography.irrigation.domain;
 import com.gemography.irrigation.domain.enums.IrrigationStatus;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,15 +34,18 @@ public class IrrigationSchedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
          
-    private Integer duration;
+    ///private Date timeSlot;
+    
+    private Integer durationInMinutes;
     
     private Integer amountOfWater;
     
+    @Enumerated(EnumType.STRING)
     private IrrigationStatus status;
        
     @ManyToOne(fetch = FetchType.LAZY)
-    private IotDevice iotDevice;
+    private LandConfiguration landConfiguration;
     
-    private Date createOn;
+    private Date createdOn;
     private Date modifiedOn;
 }
