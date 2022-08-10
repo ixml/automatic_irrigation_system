@@ -14,8 +14,11 @@ mvn package
 ```
 
 ## Dependencies
-
+```
 The system make use of MySql database as such an isntance of mysql database is required to run the application so ensure the application.properties configuration is updated with database configuration before running the application
+```
+The mail server configuration needs to be updated to send alert to system admin when irrigation controller service is not available
+
 
 ## To run the app 
 
