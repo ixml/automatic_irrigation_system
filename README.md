@@ -128,16 +128,12 @@ To  get land details navigate to http://localhost:8080/api/v1/land/
 ```
 ## How it works
 ```
-After setting up the land and land configuration a task scheduler is run every seconds to check the <br /> 
+After setting up the land and land configuration a task scheduler is run every seconds to check the 
+land that is due for irrigation base on nextTimeSlot column in the land configuration table if found, the nextTimeSlot field is updated base on the intervalInDays value. 
 
-land that is due for irrigation base on nextTimeSlot column in the land configuration table if found, the nextTimeSlot field is updated base on the intervalInDays value, then irrigation schedule
-<br /> 
+Then irrigation schedule is created and executed by sending a request to Iot device to perform the irrigation using the IoTDeviceControllerService a mock implementation as been added to the solution to return random status of SUCCESSFUL,FAILED or NOTAVAILABLE.
 
-is created and executed by sending a request to Iot device to perform the irrigation using the IoTDeviceControllerService a mock implementation as been added to the solution to return random 
-<br /> 
-status of SUCCESSFUL,FAILED or NOTAVAILABLE. if the service returns NOTAVAILABLE the service is retried until the allowed number of retries is exceed, if the status is still NOTAVAILABE then an 
-<br /> 
-alert is sent to the admin to notify the admin of the service unavailability.  
+If the service returns NOTAVAILABLE the service is retried until the allowed number of retries is exceed, if the status is still NOTAVAILABE then an  alert is sent to the admin to notify the admin of the service unavailability.  
 
 ```
 ## To run integration tests
